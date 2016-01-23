@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import AFNetworking
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
+    /* Movies is an array of dictionaries like in the json */
     var movies: [NSDictionary]?
     
     override func viewDidLoad() {
@@ -27,13 +29,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             delegateQueue:NSOperationQueue.mainQueue()
         )
         
+        /* Get the movies data from imdb */
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
                 if let data = dataOrNil {
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
-                            NSLog("response: \(responseDictionary)")
-                            self.movies = responseDictionary["results"] as! [NSDictionary]
+                            self.movies = responseDictionary["results"] as? [NSDictionary]
+                            /* Reload data when we get the results from imdb */
                             self.tableView.reloadData()
                     }
                 }
@@ -53,12 +56,31 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    /* Load cell with the movie data */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell",
-            forIndexPath: indexPath)
+            forIndexPath: indexPath) as! MovieCell
         let movie = movies![indexPath.row]
         let title = movie["title"] as! String
-        cell.textLabel!.text = title
+        let overview = movie["overview"] as! String
+        let posterPath = movie["poster_path"] as! String
+        let baseUrl = "http://image.tmdb.org/t/p/w500"
+        let imageUrl = NSURL(string: baseUrl + posterPath)
+        
+        cell.titleLabel.text = title
+        cell.overviewLabel.text = overview
+        cell.posterView.setImageWithURL(imageUrl!)
+        
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(cell)
+        let movie = movies![indexPath!.row]
+        
+        let detailViewController = segue.destinationViewController as! DetailViewController
+        
+        detailViewController.movie = movie
     }
 }
