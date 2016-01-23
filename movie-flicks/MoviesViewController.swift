@@ -14,12 +14,25 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     /* Movies is an array of dictionaries like in the json */
     var movies: [NSDictionary]?
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView?.addSubview(refreshControl)
+        
+        retrieveData()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func retrieveData() {
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
@@ -37,15 +50,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                         data, options:[]) as? NSDictionary {
                             self.movies = responseDictionary["results"] as? [NSDictionary]
                             /* Reload data when we get the results from imdb */
+                            if self.refreshControl.refreshing {
+                                self.refreshControl.endRefreshing()
+                            }
                             self.tableView.reloadData()
                     }
                 }
         });
         task.resume()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,6 +84,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.posterView.setImageWithURL(imageUrl!)
         
         return cell
+    }
+    
+    func refresh(sender:AnyObject) {
+        self.retrieveData()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
