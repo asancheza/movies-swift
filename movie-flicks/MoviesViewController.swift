@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import MBProgressHUD
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -33,6 +34,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func retrieveData() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
@@ -54,7 +57,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                                 self.refreshControl.endRefreshing()
                             }
                             self.tableView.reloadData()
+                        
+                            self.delay(0.3,closure: {MBProgressHUD.hideHUDForView(self.view, animated: true)})
                     }
+                }
+                
+                if error != nil {
+                    self.networkError()
                 }
         });
         task.resume()
@@ -88,6 +97,24 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     func refresh(sender:AnyObject) {
         self.retrieveData()
+    }
+    
+    func networkError() {
+        let alert = UIAlertView()
+        alert.title = "Connection Error"
+        alert.message = "Error getting movies"
+        alert.addButtonWithTitle("Error!")
+        alert.show()
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
