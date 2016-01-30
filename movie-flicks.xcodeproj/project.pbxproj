@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D16272E1C5D28B7003FAC47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D16272D1C5D28B7003FAC47 /* Main.storyboard */; };
+		1D2E05DC1C5D1F6D0031FFB3 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E05DB1C5D1F6D0031FFB3 /* CollectionCell.swift */; };
+		1D4FEB471C5AF1BA00B03894 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4FEB461C5AF1BA00B03894 /* CollectionViewController.swift */; };
 		1DF3E6711C4E3F80009C1171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3E6701C4E3F80009C1171 /* AppDelegate.swift */; };
-		1DF3E6761C4E3F80009C1171 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF3E6741C4E3F80009C1171 /* Main.storyboard */; };
 		1DF3E6781C4E3F80009C1171 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DF3E6771C4E3F80009C1171 /* Assets.xcassets */; };
 		1DF3E67B1C4E3F80009C1171 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DF3E6791C4E3F80009C1171 /* LaunchScreen.storyboard */; };
 		1DF3E6851C4E3FFB009C1171 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF3E6841C4E3FFB009C1171 /* MoviesViewController.swift */; };
@@ -18,9 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D16272D1C5D28B7003FAC47 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		1D2E05DB1C5D1F6D0031FFB3 /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		1D4FEB461C5AF1BA00B03894 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		1DF3E66D1C4E3F80009C1171 /* movie-flicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "movie-flicks.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF3E6701C4E3F80009C1171 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1DF3E6751C4E3F80009C1171 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1DF3E6771C4E3F80009C1171 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DF3E67A1C4E3F80009C1171 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DF3E67C1C4E3F80009C1171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,8 +80,8 @@
 				1DF429601C52812900D859DF /* View Controllers */,
 				1DF4295D1C5280FE00D859DF /* Views */,
 				1DF3E6701C4E3F80009C1171 /* AppDelegate.swift */,
-				1DF3E6741C4E3F80009C1171 /* Main.storyboard */,
 				1DF3E6771C4E3F80009C1171 /* Assets.xcassets */,
+				1D16272D1C5D28B7003FAC47 /* Main.storyboard */,
 				1DF3E6791C4E3F80009C1171 /* LaunchScreen.storyboard */,
 				1DF3E67C1C4E3F80009C1171 /* Info.plist */,
 			);
@@ -88,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				1DF429611C52817400D859DF /* MovieCell.swift */,
+				1D2E05DB1C5D1F6D0031FFB3 /* CollectionCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -97,6 +102,7 @@
 			children = (
 				1DF3E6841C4E3FFB009C1171 /* MoviesViewController.swift */,
 				1DF429631C52876E00D859DF /* DetailViewController.swift */,
+				1D4FEB461C5AF1BA00B03894 /* CollectionViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -171,9 +177,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D16272E1C5D28B7003FAC47 /* Main.storyboard in Resources */,
 				1DF3E67B1C4E3F80009C1171 /* LaunchScreen.storyboard in Resources */,
 				1DF3E6781C4E3F80009C1171 /* Assets.xcassets in Resources */,
-				1DF3E6761C4E3F80009C1171 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,23 +239,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DF3E6711C4E3F80009C1171 /* AppDelegate.swift in Sources */,
+				1D2E05DC1C5D1F6D0031FFB3 /* CollectionCell.swift in Sources */,
 				1DF3E6851C4E3FFB009C1171 /* MoviesViewController.swift in Sources */,
 				1DF429621C52817400D859DF /* MovieCell.swift in Sources */,
 				1DF429641C52876E00D859DF /* DetailViewController.swift in Sources */,
+				1D4FEB471C5AF1BA00B03894 /* CollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1DF3E6741C4E3F80009C1171 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1DF3E6751C4E3F80009C1171 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1DF3E6791C4E3F80009C1171 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -350,8 +350,9 @@
 				INFOPLIST_FILE = "movie-flicks/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.neurowork.tips.movie-flicks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.neurowork.movie-flicks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -363,8 +364,9 @@
 				INFOPLIST_FILE = "movie-flicks/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.neurowork.tips.movie-flicks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.neurowork.movie-flicks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
