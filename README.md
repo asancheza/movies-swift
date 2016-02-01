@@ -23,12 +23,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [X] Autolayout support
+- [X] Autolayout support (removed in last version)
 - [X] Detail view for every movie
-
-Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
-
-1. 
 
 ## Video Walkthrough 
 
@@ -36,11 +32,31 @@ Here's a walkthrough of implemented user stories:
 
 <img src='topmovies.gif' title='Top movies from Imdb' width='' alt='Top movies from Imdb' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+# Project 2 - Starred Movies
+
+Time spent: 10 hours spent in total
+
+## User Stories
+
+The following **required** functionality is completed:
+
+- [X] User can view movie details by tapping on a cell.
+- [X] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
+- [X] Customize the selection effect of the cell.
+
+The following **optional** features are implemented:
+
+- [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
+- [X] Customize the navigation bar.
+
+The following **additional** features are implemented:
+
+- Load a video (pendent integration)
+- Collection View
 
 ## License
 
